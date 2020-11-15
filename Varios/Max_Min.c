@@ -8,10 +8,13 @@ int main (void){
     for(i = 1; i < MAX_INPUT_VAL; i++){
         printf("Ingrese un valor numerico: \n");
         if (! (st = scanf("%d", &valor))){
-            fprintf(stderr, "%s\n", "error de ingreso");
+            fprintf(stderr, "%s\n", "Error de ingreso");
             return 1;
         }
-        while ((c = getchar()) != '\n');
+        while ((c = getchar()) != '\n' && c != EOF);
+
+
+    
 
         if(i == 1)
             min = max = valor;

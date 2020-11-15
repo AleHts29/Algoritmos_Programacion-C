@@ -9,6 +9,7 @@ Código de fabricante    |   Denominación (naming)
 3                            Sony Corporation
 4                            Verbatim Corporation
 
+
 Escribir un programa que acepte el número de código como dato de entrada y despliegue el nombre correcto del fabricante con base en el valor introducido (usar tipos enumerativos y constantes simbólicas para la modelización).
 */
 
