@@ -1,12 +1,16 @@
-#include <stdio.h>
+/*8) Escribir un programa que permita calcular de forma iterativa el factorial de un número ingresado por teclado. Finalizado el ingreso de datos, mostrar el resultado por stdout. Realizar todas las validaciones que considere necesarias.
+*/
 
-/*Ejemplo 8*/
+#include <stdio.h>
 
 int main (void){
     int fact, i, res;
-
+    int st;
     printf("Ingrese numero\n");
-    scanf("%i", &fact);
+    if(!(st = scanf("%i",&fact))){
+        fprintf(stderr,"%s\n", "ERROR DE INGRESO DE DATO");
+        return 1;
+    }
 
     if(fact<0){
         printf("Numero invalido\n");
@@ -17,7 +21,7 @@ int main (void){
     for (i=1; i <= fact; i++)
     res = res*i;
 
-    printf("El factorial del nnumero ingresado es: %i \n", res);
+    fprintf(stdout, "El factorial del nnumero ingresado es: %i \n", res);
     return 0;
 
 }
