@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main (void){
-    int fact, i, res;
+    int fact, i, resultado;
     int st;
     printf("Ingrese numero\n");
     if(!(st = scanf("%i",&fact))){
@@ -17,11 +17,11 @@ int main (void){
         return 1;
     }
 
-    res = 1; 
+    resultado = 1; 
     for (i=1; i <= fact; i++)
-    res = res*i;
+    resultado = resultado*i;
 
-    fprintf(stdout, "El factorial del nnumero ingresado es: %i \n", res);
+    fprintf(stdout, "El factorial del nnumero ingresado es: %i \n", resultado);
     return 0;
 
 }

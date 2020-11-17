@@ -1,0 +1,5 @@
+1     Perez           Juan            43.00
+2     Perez           Ramon           98.20
+5     Ruiz            Carlos         655.09
+65    Rodriguez       Pedro            0.00
+65    Rodriguez       Pedro            0.00

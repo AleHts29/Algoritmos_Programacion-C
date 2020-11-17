@@ -4,7 +4,7 @@
 
 
 #include <stdio.h>
-#define SUM_ERROR 10E-4
+#define SUM_ERROR 10E-9
 
 int main (void){
 
@@ -12,12 +12,14 @@ int main (void){
     double e = 1;
     double invf = 1;
 
+
     while (invf > SUM_ERROR)
     {
         invf /= N;  /*invf = invf /N */
         e += invf; /* e = e +invf */
-        N++;
+        N++; 
     }
+
 
     printf("El valor del error es: %.10f\n", SUM_ERROR);
     printf("El valor de e es: %.10f\n", e);
