@@ -1,24 +1,13 @@
 /*
-10) Cada unidad de disco de un cargamento está marcada con un código del 1 al 4 que indica un fabricante:
-
-Código de fabricante    |   Denominación (naming)
-(manufacturer id)  
- 
-1                            3M Corporation 
-2                            Maxell Corporation
-3                            Sony Corporation
-4                            Verbatim Corporation
-
-
-Escribir un programa que acepte el número de código como dato de entrada y despliegue el nombre correcto del fabricante con base en el valor introducido (usar tipos enumerativos y constantes simbólicas para la modelización).
+Modificar el ejer_10 para si en vez de ingresar el código, se quisiera ingresar los símbolos “3”, “M”, “S” y “V” respectivamente?
 */
 
 #include <stdio.h>
 
-#define MAXWELL_MANUFACTURER_ID 1
-#define SONY_MANUFACTURER_ID 2
-#define VERBATIM_MANUFACTURER_ID 3
-#define _3M_MANUFACTURE_ID 4
+#define MAXWELL_MANUFACTURER_ID 'M'
+#define SONY_MANUFACTURER_ID 'S'
+#define VERBATIM_MANUFACTURER_ID 'V'
+#define _3M_MANUFACTURE_ID '3'
 
 #define MAXWELL_NAMING "Maxwell Corporation"
 #define SONY_NAMING "Sony Corporation"
@@ -27,26 +16,27 @@ Escribir un programa que acepte el número de código como dato de entrada y d
 
 /* Usar prefijos */
 typedef enum {
-	CORPORATION_MAXWELL,
-	CORPORATION_SONY,
-  	CORPORATION_VERBATIM,
-	CORPORATION_3M
+	CORPORATION_MAXWELL = 'M',
+	CORPORATION_SONY = 'S',
+  	CORPORATION_VERBATIM = 'V',
+	CORPORATION_3M = 3
 } manufacturer_t;
 
 typedef unsigned int uint;
 
 int main(void) {
 
-	int option, st;
+	int  st;
+	char option;
 	manufacturer_t manufacturer;
 
 	printf("Ingrese el id del fabricante:\n");
-	printf("%d - %s\n", MAXWELL_MANUFACTURER_ID, MAXWELL_NAMING);
-	printf("%d - %s\n", SONY_MANUFACTURER_ID, SONY_NAMING);
-	printf("%d - %s\n", VERBATIM_MANUFACTURER_ID, VERBATIM_NAMING);
-	printf("%d - %s\n", _3M_MANUFACTURE_ID, _3M_NAMING);
+	printf("%c - %s\n", MAXWELL_MANUFACTURER_ID, MAXWELL_NAMING);
+	printf("%c - %s\n", SONY_MANUFACTURER_ID, SONY_NAMING);
+	printf("%c - %s\n", VERBATIM_MANUFACTURER_ID, VERBATIM_NAMING);
+	printf("%c - %s\n", _3M_MANUFACTURE_ID, _3M_NAMING);
 
-	if(!(st=scanf("%i", &option)))
+	if(!(st=scanf("%c", &option)))
         {
             fprintf(stderr, "%s\n", "ERROR AL INGRESO DE DATOS");
             return 1;
