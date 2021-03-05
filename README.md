@@ -1,2 +1,2 @@
-# Algoritmos_Programacion_I
+# Algoritmos_Programacion
 Resueltos guias Cardozo
