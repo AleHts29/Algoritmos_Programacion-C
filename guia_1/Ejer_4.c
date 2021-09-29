@@ -8,33 +8,51 @@ b) Determinar un algoritmo para convertir los datos entrada en datos de salida. 
 
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
+#define MSG_INVALID_DATA "ERROR: Dato ingresado no valido"
+#define MSG_WELCOME "Ingrese los valores para u, sigma y X"
 
 
 int main (void){
-    float y;
-    int u, sigma, x;
-    int c, st;
+    double Y;
+    float sigma, x, u;
+    int c;
+   
 
-    printf("Ingrese los valores de: \n u\tsigma\tx\n");
-    if (!(st = scanf("%i%i%i", &u, &sigma, &x))){
-        fprintf(stderr, "%s\n","ERROR DE INGRESO");
+    puts(MSG_WELCOME);
+    
+    if(!(scanf("%f", &u))){
+        fprintf(stderr, "%s", MSG_INVALID_DATA );
+        return 1;
+    }else{
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
+    
+    if (!(scanf("%f", &sigma))) {
+        fprintf(stderr, "%s", MSG_INVALID_DATA );
+        return 1;
+    }else{
+        while ((c = getchar()) != '\n' && c != EOF);
+    }
+
+    if(!(scanf("%f", &x))){
+        fprintf(stderr, "%s", MSG_INVALID_DATA );
         return 1;
     }
+    else{
+        while ((c = getchar()) != '\n' && c != EOF);
+        if(sigma != 0){
+            Y = (1/(2*M_PI*sqrt(sigma)))*exp(-0.5*pow((x-u)/sigma,2));
+            printf("El valor de la curva normal es: %.4f\n", Y);
 
-    /*Vaciar buffer*/
-    while((c = getchar()) != '\n' && c != EOF);
-
-    if (sigma != 0){
-        printf("Los datos ingresados son:\nu = %d\nSigma = %d\nx = %d\n", u, sigma, x);
-
-        y = (1/(2*M_PI*sqrt(sigma)))*exp(-0.5*pow((float)(x-u)/sigma,2));
-
-        printf("El valor de la curva normal es: %.4f\n", y);
-    }else{
-        fprintf(stderr, "%s\n","ERROR: No se puede dividir entre 0");
+        }else{
+            fprintf(stderr, "%s", MSG_INVALID_DATA );
+            return 1;
+        }
     }
 
-    return 0;
 
+
+    return 0;
 }
