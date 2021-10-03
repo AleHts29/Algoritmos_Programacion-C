@@ -23,14 +23,14 @@ int main (void){
         fprintf(stderr, "%s", MSG_INVALID_DATA );
         return 1;
     }else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
     }
     
     if (!(scanf("%f", &sigma))) {
         fprintf(stderr, "%s", MSG_INVALID_DATA );
         return 1;
     }else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
     }
 
     if(!(scanf("%f", &x))){
@@ -38,7 +38,7 @@ int main (void){
         return 1;
     }
     else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
         if(sigma != 0){
             Z = (x-u) / sigma;
             printf("El valor de la desviasion estandar normal es: Z = %.2f", Z);

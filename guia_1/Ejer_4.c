@@ -26,14 +26,14 @@ int main (void){
         fprintf(stderr, "%s", MSG_INVALID_DATA );
         return 1;
     }else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
     }
     
     if (!(scanf("%f", &sigma))) {
         fprintf(stderr, "%s", MSG_INVALID_DATA );
         return 1;
     }else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
     }
 
     if(!(scanf("%f", &x))){
@@ -41,7 +41,7 @@ int main (void){
         return 1;
     }
     else{
-        while ((c = getchar()) != '\n' && c != EOF);
+        while ((c = getchar()) != '\n' || c != EOF);
         if(sigma != 0){
             Y = (1/(2*M_PI*sqrt(sigma)))*exp(-0.5*pow((x-u)/sigma,2));
             printf("El valor de la curva normal es: %.4f\n", Y);

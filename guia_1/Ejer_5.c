@@ -4,47 +4,49 @@
 
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <math.h>
 
+#define MSG_RAIZ "Calcule la Raiz Cuadrada de:"
+#define MSG_INVERSO "Calcule el Inverso Multiplicativo de:"
+#define MSG_INVALID_DATA "ERROR: TIpo de dato no valido"
+#define MSG_CERO "El numero ingresado debe ser mayor a cero"
 
-int main(){
-    float r, i;
-    int c, st;
-
-    printf("Calcular raiz cuadrada de: ");
-    /*Validacion*/
-    if (!(st = scanf ("%f", &r ))){
-        fprintf(stderr,"%s\n","ERROR DE INGRESO DE DATO");
-        return 1;
-    }
-    /*Limpia buffer*/
-    while((c = getchar()) != '\n' && c != EOF);
-
-    printf("Calcular inverso multiplicativo de: ");
-    /*Validacion*/
-    if (!(st = scanf ("%f", &i ))){
-        fprintf(stderr,"%s\n","ERROR DE INGRESO DE DATO");
-        return 1;
-    }
-    /*Limpia buffer*/
-    while((c = getchar()) != '\n' && c != EOF);
+int main(void){
+    int c;
+    size_t st = 0;
+    float numRaiz = 0;
+    float numInverso = 0;
 
     
-    printf("\n");
-
-    if(r > 0 ){
-    r = sqrt(r);
-    printf("La raiz cuadrada es: %.2f\n",r);
-    }else{
-        fprintf(stderr,"%s\n", "ERROR: No se puede calcular raiz cuadrada de numeros negativos!");
+puts(MSG_RAIZ);
+    if(!(st = scanf("%f", &numRaiz))){
+        fprintf(stderr,"%s", MSG_INVALID_DATA);
+        return 1;
+    }
+    else{
+        while ((c = getchar()) != '\n' && c != EOF);
+        if(numRaiz < 0){
+            fprintf(stderr,"%s", MSG_CERO);
+        }
+        numRaiz = sqrt(numRaiz);
+        printf("la raiz cuadrada del numero ingresado es: %.2f \n", numRaiz);
     }
 
-    if (i != 0){
-    i = 1/i;
-    printf("Su inverso multiplicativo es: %.2f\n", i);
-    }else{
-        fprintf(stderr, "%s\n", "ERROR: No se puede dividir entre 0");
+puts(MSG_INVERSO);
+    if(!(st = scanf("%f", &numInverso))){
+        fprintf(stderr,"%s", MSG_INVALID_DATA);
+        return 1;
     }
-return 0;
+    else{
+        if(numInverso == 0){
+            fprintf(stderr,"%s", MSG_CERO);
+        }
+        numInverso = 1/numInverso;
+        printf("El inverso multiplicativo del numero ingresado es: %.2f\n", numInverso);
+    }
 
+   return 0;
 }
+
