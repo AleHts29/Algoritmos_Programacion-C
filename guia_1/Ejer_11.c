@@ -5,26 +5,25 @@ operadores módulo, %, y división, /, para obtener los dígitos de a uno por
 
 
 #include <stdio.h>
+#include <stdlib.h>
+
+#define MSG_INVALID_DATA "ERROR: Dato ingresado no valido"
 
 int main (void){
+    size_t st;
+    int num = 0,auxRest = 0;
 
-    int N, a;
-    int st; 
-
-    printf("Ingrese un numero entero positivo:\n");
-    if(!(st = scanf("%i", &N)) || N < 0){
-        fprintf(stderr,"%s","ERROR DE INGRESO DE DATO");
+    if(!(st = scanf("%i", &num))){
+        fprintf(stderr,"%s", MSG_INVALID_DATA);
         return 1;
     }
-    
-    printf("El numero invertido es: ");
 
-    while (N > 0){
-        a = N%10; 
-        N = N/10;
-
-        printf("%i", a);
+    while (num != 0){
+        auxRest = num % 10;
+        num = num / 10;
+        printf("%i", auxRest);
     }
+
     return 0;
 
 }

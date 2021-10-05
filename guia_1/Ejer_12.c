@@ -3,33 +3,38 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+
 #define MAX_INPUT_VAL 5
 
+#define MSG_INVALID_DATA "ERROR: Dato ingresado no valido"
+
 int main (void){
+    size_t st, counter = 1;
+    float num, numMax = 0, numMin = 0;
+    int c;
 
-    float max, min, valor;
-    int st, c, i;
-
-    for(i = 1; i < MAX_INPUT_VAL; i++){
-        printf("Ingrese un valor numerico: \n");
-        if (! (st = scanf("%f", &valor))){
-            fprintf(stderr, "%s\n", "Error de ingreso");
-            return 1;
-        }
-        while ((c = getchar()) != '\n' && c != EOF);
-
-
-        if(i == 1)
-            min = max = valor;
-
-        if (valor < min)
-            min = valor;
-        if (max < valor)
-            max = valor;
+    do{
+        
+        if(!(st = scanf("%f", &num))){
+        fprintf(stderr,"%s", MSG_INVALID_DATA);
+        return 1;
     }
+        while((c = getchar()) != '\n' && c != EOF);
 
-    printf("\nValor maximo: %.3f\n", max);
-    printf("Valor minimo: %.3f\n", min);
+        if(num > numMax){
+            numMax = num;
+        }
+
+        if(num < numMin){
+            numMin = num;
+        }
+        counter++;
+
+    }while(counter <= MAX_INPUT_VAL);
+
+    fprintf(stdout,"\nEl valor maximo de los numeros ingresados es: %.3f\n", numMax);
+    fprintf(stdout,"El valor minimo de los numeros ingresados es: %.3f\n", numMin);
     
     return 0;
 }

@@ -2,31 +2,34 @@
 9) Escribir un programa que lea un número entero positivo e imprima por stdout los números naturales impares menores que él.*/
 
 #include <stdio.h>
+#include <stdlib.h>
+
+#define MSG_WELCOME "Por favor ingrese un numero entero positivo"
+#define MSG_INVALID_DATA "ERROR: Dato ingresado no valido"
+#define MSG_INVALID_NUMBER "El numero ingresado debe ser mayor a cero"
 
 int main (void){
+    size_t st, i;
+    int num;
 
-int N, N_Impares;
-int st, i;
+puts(MSG_WELCOME);
+    if(!(st = scanf("%i", &num))){
+        fprintf(stderr, "%s", MSG_INVALID_DATA );
+        return 1;
+    }
 
-printf("Ingrese un numero entero positivo: \n");
-if(!(st = scanf("%i", &N))){
-    fprintf(stderr, "%s", "ERROR DE INGRESO DE DATO");
-    return 1;
-}
-
-if(N > 0){
-
-printf("Los numero naturales impares menores que [%i] son:\n", N);
-
-        for (i = 0; i < N ; i++){
-            if (i%2 != 0){
-                N_Impares = i;
-                printf("%i\n", N_Impares);
+    if (num > 0){ 
+        printf("Los numeros Naturales impares menores que %i son:\n", num);
+        for(i = 0; i < num; i++){  
+            if( (i % 2) != 0){
+                fprintf(stdout,"%lu\n", i);
             }
         }
     }else{
-        printf("Numero invalido.\n");
+        fprintf(stderr,"%s", MSG_INVALID_NUMBER);
+        return 1;
     }
+    
     return 0;
 
 }

@@ -5,31 +5,31 @@
 
 #include <stdio.h>
 
+#define MIN_QUALIFICATION 0
+#define MAX_QUALIFICATION 100
 
-int main (void){
+#define MSG_QUALIFICATION "Ingrese calificacion (Valores entre 0 y 100)"
+#define MSG_IVALID_DATA "ERROR: Dato ingresado no valido"
+#define MSG_INVALID_QUALIFICATION "Calificacion no valida"
 
-    int Calificacion, Total_Calificacion;
-    int d, st;
+int main(void){
+    size_t st;
+    float qualification = 0;
+    float totalQualification = 0;
 
-    Calificacion = 0;
-    Total_Calificacion = 0;
 
-    do{
-        Total_Calificacion += Calificacion;
-        printf("Ingrese Calificacion: \n");
-        if(!(st = scanf("%d", &Calificacion))){
-            fprintf(stderr,"%s\n","ERROR DE INGRESO DE DATO");
-            return 1;
-        }
-        while((d = getchar()) != '\n' && d != EOF);
 
-        if (Calificacion < 0 || Calificacion > 100){
-            printf("La calificacion %i invalida\n", Calificacion);
-        }
+do{
+    puts(MSG_QUALIFICATION);
+    totalQualification += qualification;
+    if(!(st = scanf("%f", &qualification))){
+        fprintf(stderr, "%s", MSG_IVALID_DATA);
+        return 1;
+    }
+}while(qualification >= MIN_QUALIFICATION && qualification <= MAX_QUALIFICATION );
+    puts(MSG_INVALID_QUALIFICATION);
+    printf("El total de calificaciones validas ingresadas es: %.2f", totalQualification);
 
-    }while(Calificacion >= 0 && Calificacion <= 100);
-        printf("El total de calificaciones es: %i\n", Total_Calificacion);
-  
-    return 0; 
-
+return 0;
 }
+

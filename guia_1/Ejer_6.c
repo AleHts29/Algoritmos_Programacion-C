@@ -5,32 +5,51 @@
 #include <stdio.h>
 #include <math.h>
 
+#define INVALID_NUMBER 0
 
-int main (void){
+#define MSG_CUADRATICA_DATOS "Ecuacion Cuadratica, por favor ingrese los valores de a, b y c"
+#define MSG_INVALID_DATA "ERROR: Tipo de dato no valido"
+#define MSG_INVALID_NUMBER "No se puede dividir entre cero"
 
-    float X1, X2;
+
+int main(void){
+    int buffer;
+    size_t st = 0;
     int a, b, c;
-    int d, st;
+    float x1, x2;
 
-    printf("Ingrese los valores de: \na\tb\tc\n\n");
-    if(!(st = scanf("%d%d%d", &a, &b, &c))){
-        fprintf(stderr,"%s\n","ERROR DE INGRESO DE DATOS");
-        return 1;
-    }
 
-    /*Vaciar buffer*/
-    while((d = getchar()) != '\n' && d != EOF);
+puts(MSG_CUADRATICA_DATOS);
+/*Validacion de cada una de las entradas*/
+if(!(st = scanf("%d", &a))){
+    fprintf(stderr,"%s",MSG_INVALID_DATA );
+    return 1;
+}
+while((buffer = getchar()) != '\n' && buffer != EOF);
 
-    if(a != 0){
-        
-        X1 = (-b + sqrt(pow(b,2)-4*a*c))/2*a;
-        X2 = (-b - sqrt(pow(b,2)-4*a*c))/2*a;   
+if(!(st = scanf("%d", &b))){
+    fprintf(stderr,"%s",MSG_INVALID_DATA );
+    return 1;
+}
+while((buffer = getchar()) != '\n' && buffer != EOF);
 
-        printf("Las raices de la ecuacion cuadratica son:\nX1: %f\nX2: %f", X1, X2); 
-    }else{
-        fprintf(stderr,"%s\n","ERROR: No se puede dividir entre cero");
-    }
+if(!(st = scanf("%d", &c))){
+    fprintf(stderr,"%s",MSG_INVALID_DATA );
+    return 1;
+}
+while((buffer = getchar()) != '\n' && buffer != EOF);
 
-    return 0;
+
+
+if( a != INVALID_NUMBER){
+    /*Ecuacion Cuadratica*/
+    x1 = (-b + sqrt((pow(b,2)) - (4*a*c)))/(2*a);
+    x2 = (-b - sqrt((pow(b,2)) - (4*a*c)))/(2*a);
+
+    printf("Las solucion de la Ecuacion cuadratica para los numeros ingresados son:\nX1: %.2f\nX2: %.2f", x1, x2);
+}
+puts(MSG_INVALID_NUMBER);
+
+return 0;
 
 }

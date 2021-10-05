@@ -5,7 +5,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <math.h>
 
 #define MSG_RAIZ "Calcule la Raiz Cuadrada de:"
