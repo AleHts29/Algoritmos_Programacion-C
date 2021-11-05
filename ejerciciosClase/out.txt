@@ -1,0 +1,4 @@
+Hola stderr
+Hola stderr dentro del if()
+Hola stderr
+Hola stderr dentro del if()

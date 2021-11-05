@@ -6,72 +6,104 @@ c) Escribir un fragmento de código que lea del flujo de entrada estándar un 
 de temperatura en una de las dos escalas y la convierta paramétricamente a la otra, mostrando el resultado por el flujo de salida estándar.
 */
 
+#include <stdio.h>
+#include <stdlib.h>
 
-#include<stdio.h>
+#define USR_MSG_OPTION "Elija la opcion de conversion"
+#define USM_MSG_INPUT_VALUE "Por favor ingrese un valor de temperatura"
+#define ERROR_INPUT_OPTION "Error: Dato ingresado no valido"
+#define ERROR_INVALID_CONVERSION "Error: No se pudo realizar la conversion"
+#define INVALID_OPTION "Opcion no valida"
+
+#define CELSIUS_NAME "Temperatura en Celcius"
+#define FAHRENHEIT_NAME "Temperatura en Fahrenheit"
 
 #define CELSIUS_ID 1
 #define FAHRENHEIT_ID 2
 
-#define CELSIUS_NAME "Celsius"
-#define FAHRENHEIT_NAME "Fahrenheit"
 
-typedef enum {
-    CELSIUS, 
-    FAHRENHEIT
-} scale_t;
+typedef float dato_t;
 
-typedef float date_t;
+    typedef enum {
+        CELSIUS_SCALE, 
+        FAHRENHEIT_SCALE
+    } scale_t;
 
-int main(void)
-{
-    scale_t result;
-    date_t total;
-    int num, option;
-    int c, st;
+int main(void){
 
-    printf("Ingrese la unidad que quiere averigurar:\n");
-    printf("%d - %s\n", CELSIUS_ID, CELSIUS_NAME);
-    printf("%d - %s\n", FAHRENHEIT_ID, FAHRENHEIT_NAME);
-
-    if(!(st=scanf("%i", &option)))
-        {
-            fprintf(stderr, "%s\n", "ERROR AL INGRESO DE DATOS");
-            return 1;
-        }
-    while ((c = getchar()) != '\n' && c != EOF);
+    int option, dato, st, c;
+    scale_t scale;
+    dato_t conversion_temperature;
 
 
-    printf("Ingrese un numero:\n");
+    puts(USR_MSG_OPTION);
+    printf("%d - %s\n",CELSIUS_ID, CELSIUS_NAME);
+    printf("%d - %s\n",FAHRENHEIT_ID, FAHRENHEIT_NAME);
+
+    /* Leo y valido */
+    if(!(st = scanf("%d", &option))){
+        fprintf(stderr, "%s", ERROR_INPUT_OPTION);
+        return EXIT_FAILURE;
+    }
+    /* Limpio buffer */
+    while(((c = getchar()) != '\n') && (c != EOF));
+
     
-    if(!(st=scanf("%i", &num)))
+
+    /* Traduccion */
+    switch (option)
         {
-            fprintf(stderr, "%s\n", "ERROR! El dato ingresado NO es correcto");
+        case CELSIUS_ID:
+            scale = CELSIUS_SCALE;
+            break;
+
+        case FAHRENHEIT_ID:
+            scale = FAHRENHEIT_SCALE;
+            break;
+        
+        default:
+            puts(INVALID_OPTION);
             return 1;
         }
-     while ((c = getchar()) != '\n' && c != EOF);
-
-    switch (option)
-    {
-        case CELSIUS_ID:
-            result = CELSIUS;
-            break;
-        default:
-            result = FAHRENHEIT;
-            break;
+    
+    puts(USM_MSG_INPUT_VALUE);
+    /* Leo y valido el valor de temperatura*/
+    st = scanf("%d", &dato);
+    if(!(st)|| st == EOF){
+        fprintf(stderr, "%s", ERROR_INPUT_OPTION);
+        return EXIT_FAILURE;
     }
+    /* Limpio buffer */
+    while(((c = getchar()) != '\n') && (c != EOF))
 
-    switch (result)
-    {
-        case CELSIUS:
-            total = (num - 32) * (float) 5/9;
-            printf("%4i %s son %f %s\n", num, FAHRENHEIT_NAME, total, CELSIUS_NAME);
+    /* Procesamiento */
+    switch (scale)
+        {
+        case CELSIUS_SCALE:
+            conversion_temperature = (dato - 32) * (float) 5/9;
             break;
+
+        case FAHRENHEIT_SCALE:
+            conversion_temperature = (dato * (float) 9/5 ) + 32;
+            break;
+        
         default:
-            total = (num * (float) 9/5) + 32;
-            printf("%4i %s son %f %s\n", num, CELSIUS_NAME , total, FAHRENHEIT_NAME);
-        break;
-    }
+            puts(ERROR_INVALID_CONVERSION);
+            break;
+        }
 
 
-    return 0;
+    /* Salida */
+    switch (scale)
+        {
+        case CELSIUS_SCALE:
+            printf("%4i %s son %f %s\n", dato, FAHRENHEIT_NAME, conversion_temperature, CELSIUS_NAME);
+            break;
+
+        case FAHRENHEIT_SCALE:
+            printf("%4i %s son %f %s\n", dato, CELSIUS_NAME, conversion_temperature, FAHRENHEIT_NAME);
+            break;
+        }
+
+    return EXIT_SUCCESS;
 }

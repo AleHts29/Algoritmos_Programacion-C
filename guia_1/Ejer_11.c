@@ -11,19 +11,21 @@ operadores módulo, %, y división, /, para obtener los dígitos de a uno por
 
 int main (void){
     size_t st;
-    int num = 0,auxRest = 0;
+    int num = 0, auxRest = 0;
 
     if(!(st = scanf("%i", &num))){
         fprintf(stderr,"%s", MSG_INVALID_DATA);
         return 1;
     }
 
+auxRest = 0;
     while (num != 0){
-        auxRest = num % 10;
-        num = num / 10;
-        printf("%i", auxRest);
+        auxRest = auxRest*10 + num % 10;
+        num = num / 10;     
     }
 
+    printf("%i", auxRest);
+    
     return 0;
 
 }

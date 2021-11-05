@@ -17,7 +17,7 @@ int main (void){
     do{
         
         if(!(st = scanf("%f", &num))){
-        fprintf(stderr,"%s", MSG_INVALID_DATA);
+        fprintf(stderr,"%s", MSG_INVALID_DATA); 
         return 1;
     }
         while((c = getchar()) != '\n' && c != EOF);
