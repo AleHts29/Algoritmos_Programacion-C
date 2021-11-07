@@ -8,7 +8,7 @@ variable anterior (traducción semántica).
 */
 
 
-#include<stdio.h>
+#include <stdio.h>
 
 int main(void){
 

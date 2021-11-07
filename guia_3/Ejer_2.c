@@ -11,7 +11,14 @@ Escribir un fragmento de código que determine si una cadena de caracteres esta
 #define MAX_STR 100
 
 int main(void) {
-    char s[MAX_STR]="HOLA";
+
+    int i;
+    char s[MAX_STR]= "Hola";
+
+    for (i = 0; i < strlen(s); i++){
+        printf("%i - %c\n",i ,s[i]);
+    }
+    printf("tamaño efectivo del aaray: %lu", strlen(s));
 
     if (s[0]=='\0')
     {
