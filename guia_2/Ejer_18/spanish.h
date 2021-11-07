@@ -1,0 +1,13 @@
+
+#define JANUARY_NAME "Enero"
+#define FEBRUARY_NAME "Febrero"
+#define MARCH_NAME "Marzo"
+#define APRIL_NAME "Abril"
+#define MAY_NAME "Mayo"
+#define JUNE_NAME "Junio"
+#define JULY_NAME "Julio"
+#define AUGUST_NAME "Augostp"
+#define SEPTEMBER_NAME "Septiembre"
+#define OCTUBER_NAME "Octubre"
+#define NOVEMBER_NAME "Noviembre"
+#define DECEMBER_NAME "Diciembre"

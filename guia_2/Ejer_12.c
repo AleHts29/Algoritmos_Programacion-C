@@ -24,8 +24,7 @@ int main(void){
 int x;
 resultado_t proceso = CORRECTO;
 
-if (proceso == CORRECTO) 
-     x = 1;
+if (proceso == INCORRECTO) x = 1;
 else x = -1;
 
 printf("X = %d", x);

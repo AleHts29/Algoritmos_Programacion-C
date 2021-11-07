@@ -3,6 +3,7 @@ Modificar el ejer_10 para si en vez de ingresar el código, se quisiera ingresa
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAXWELL_MANUFACTURER_ID 'M'
 #define SONY_MANUFACTURER_ID 'S'
@@ -13,6 +14,8 @@ Modificar el ejer_10 para si en vez de ingresar el código, se quisiera ingresa
 #define SONY_NAMING "Sony Corporation"
 #define VERBATIM_NAMING "Verbatim Corporation"
 #define _3M_NAMING "3M Corporation"
+
+#define ERROR_INPUT_OPTION "Error: Dato ingresado no valido"
 
 /* Usar prefijos */
 typedef enum {
@@ -38,8 +41,8 @@ int main(void) {
 
 	if(!(st=scanf("%c", &option)))
         {
-            fprintf(stderr, "%s\n", "ERROR AL INGRESO DE DATOS");
-            return 1;
+            fprintf(stderr, "%s\n", ERROR_INPUT_OPTION);
+            return EXIT_FAILURE;
         }
 
 	/*Traducción*/
@@ -74,5 +77,5 @@ int main(void) {
 		  break;
 	}
 	
-	return 0;
+	return EXIT_SUCCESS;
 }

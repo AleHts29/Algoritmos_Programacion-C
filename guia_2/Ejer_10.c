@@ -14,6 +14,7 @@ Escribir un programa que acepte el número de código como dato de entrada y d
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define MAXWELL_MANUFACTURER_ID 1
 #define SONY_MANUFACTURER_ID 2
@@ -24,6 +25,8 @@ Escribir un programa que acepte el número de código como dato de entrada y d
 #define SONY_NAMING "Sony Corporation"
 #define VERBATIM_NAMING "Verbatim Corporation"
 #define _3M_NAMING "3M Corporation"
+
+#define ERROR_INPUT_OPTION "Error: Dato ingresado no valido"
 
 /* Usar prefijos */
 typedef enum {
@@ -37,7 +40,7 @@ typedef unsigned int uint;
 
 int main(void) {
 
-	int option, st;
+	int option, st, c;
 	manufacturer_t manufacturer;
 
 	printf("Ingrese el id del fabricante:\n");
@@ -48,9 +51,10 @@ int main(void) {
 
 	if(!(st=scanf("%i", &option)))
         {
-            fprintf(stderr, "%s\n", "ERROR AL INGRESO DE DATOS");
-            return 1;
+            fprintf(stderr, "%s\n", ERROR_INPUT_OPTION);
+            return EXIT_FAILURE;
         }
+	while( ((c = getchar()) != '\n') && (c != EOF));
 
 	/*Traducción*/
 	switch(option) {
@@ -84,5 +88,5 @@ int main(void) {
 		  break;
 	}
 	
-	return 0;
+	return EXIT_SUCCESS;
 }

@@ -4,77 +4,103 @@ a) Un dispositivo de comunicaciones puede utilizar una velocidad de transferenci
 b) ¿Conviene utilizar un prefijo para los tokens del tipo enumerativo? ¿Por qué?
 */
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 
-#include<stdio.h>
 
-#define BAUD_RADE_1200_ID 1
-#define BAUD_RADE_2400_ID 2
-#define BAUD_RADE_4800_ID 3
-#define BAUD_RADE_9600_ID 4
+#define USM_MSG_INPUT_OPTION "Por favor elija una opcion"
+#define INVALID_OPTION "Opcion no valida"
+#define ERROR_INPUT_OPTION "Error: Dato ingresado no valido"
 
-#define BR1200_NAMING "Baud_rate 1200"
-#define BR2400_NAMING "Baud_rate 2400"
-#define BR4800_NAMING "Baud_rate 4800"
-#define BR9600_NAMING "Baud_rate 9600"
+#define BAUD_RATE_1200_NAMING "Baud_rate_1200"
+#define BAUD_RATE_2400_NAMING "Baud_rate_2400"
+#define BAUD_RATE_4800_NAMING "Baud_rate_4800"
+#define BAUD_RATE_9600_NAMING "Baud_rate_9600"
+
+#define BAUD_RATE_1200_ID 1
+#define BAUD_RATE_2400_ID 2
+#define BAUD_RATE_4800_ID 3
+#define BAUD_RATE_9600_ID 4
 
 
 typedef enum {
-    BAUD_1200,
-    BAUD_2400,
-    BAUD_4800,
-    BAUD_9600
-} baudrate_t;
+    BAUD_RATE_1200,
+    BAUD_RATE_2400,
+    BAUD_RATE_4800,
+    BAUD_RATE_9600
+} baud_t;
+
 
 int main (void){
 
-    int option, st;
-    baudrate_t baudrate;
+    baud_t baud_rate;
+    size_t st;
+    int c, option;
 
-    printf("Ingrese el id de la velocidad de transferencia:\n");
-	printf("%d - %s\n", BAUD_RADE_1200_ID, BR1200_NAMING);
-	printf("%d - %s\n", BAUD_RADE_2400_ID, BR2400_NAMING);
-	printf("%d - %s\n", BAUD_RADE_4800_ID, BR4800_NAMING);
-	printf("%d - %s\n", BAUD_RADE_9600_ID, BR9600_NAMING);
+    puts(USM_MSG_INPUT_OPTION);
+    printf("%d - %s\n", BAUD_RATE_1200_ID, BAUD_RATE_1200_NAMING);
+	printf("%d - %s\n", BAUD_RATE_2400_ID, BAUD_RATE_2400_NAMING);
+	printf("%d - %s\n", BAUD_RATE_4800_ID, BAUD_RATE_4800_NAMING);
+	printf("%d - %s\n", BAUD_RATE_9600_ID, BAUD_RATE_9600_NAMING);
 
-if(!(st=scanf("%i", &option)))
-        {
-            fprintf(stderr, "%s\n", "ERROR AL INGRESO DE DATOS");
-            return 1;
-        }
+    if( !(st = scanf("%d", &option))){
+        fprintf(stderr, "%s", ERROR_INPUT_OPTION );
+        return EXIT_FAILURE;
+    }
+    while( ((c = getchar()) != '\n') && (c != EOF));
 
-/*Traduccion*/
-switch (option){
-    case BAUD_RADE_1200_ID:
-        baudrate = BAUD_1200;
+
+
+    /* Traduccion */
+    switch (option)
+    {
+    case BAUD_RATE_1200_ID:
+        baud_rate = BAUD_RATE_1200;
         break;
-    case BAUD_RADE_2400_ID:
-        baudrate = BAUD_2400;
+
+    case BAUD_RATE_2400_ID:
+        baud_rate = BAUD_RATE_2400;
         break;
-    case BAUD_RADE_4800_ID:
-        baudrate = BAUD_4800;
+
+    case BAUD_RATE_4800_ID:
+        baud_rate = BAUD_RATE_4800;
         break;
+
+    case BAUD_RATE_9600_ID:
+        baud_rate = BAUD_RATE_9600;
+        break;
+    
     default:
-        baudrate = BAUD_9600;
+        baud_rate = BAUD_RATE_9600;
+        break;
+    }
+
+    
+    /* Procesamiento */
+    switch (baud_rate)
+    {
+    case BAUD_RATE_1200:
+        printf("%s\n", BAUD_RATE_1200_NAMING);
+        break;
+
+    case BAUD_RATE_2400:
+        printf("%s\n", BAUD_RATE_2400_NAMING);
+        break;
+
+    case BAUD_RATE_4800:
+        printf("%s\n", BAUD_RATE_4800_NAMING);
+        break;
+
+    case BAUD_RATE_9600:
+        printf("%s\n", BAUD_RATE_9600_NAMING);
+        break;
+    
+    default:
+        break;
+    }
+     
+
+    return EXIT_SUCCESS;
+
 }
-
-
-/*Procesamiento*/
-switch(baudrate){
-    case BAUD_1200:
-        printf("%s\n", BR1200_NAMING);
-        break;
-    case BAUD_2400:
-        printf("%s\n", BR2400_NAMING);
-        break;
-    case BAUD_4800:
-        printf("%s\n", BR4800_NAMING);
-        break;
-    case BAUD_9600:
-        printf("%s\n", BR9600_NAMING);
-        break;
-}
-
-return 0;
-
-}
-
