@@ -1,38 +1,26 @@
-/*
-4:
-Escribir un programa que inicialice arreglo de caracteres con una cadena cualquiera y lo imprima en orden inverso por el flujo de salida estándar.
-*/
+/* Escribir un programa que inicialice un arreglo de caracteres con una cadena cualquiera y lo imprima en orden inverso por el flujo de salida estandar */
 
-
-
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define MAX_STR 100
 
-int main(void) {
-    char s[MAX_STR]="Hola Mundo";
-/*                   0123456789
-                     12345678910
-     */
-    size_t len, j, i=0;
+int main (void){
+    char str1[MAX_STR] = "Hola Mundo";
+    char str2[MAX_STR];
+    size_t i, j = 0, len;
 
-    len=strlen(s);
-    printf("Len 1: %ld\n", len);
-
-    while (s[i]!='\0'){
-        ++i; 
-    putchar(s[i-1]);
-    
+    len = strlen(str1);
+    for (i = len; i > 0; i--  ){
+        printf("%lu - %c\n",i -1  ,str1[i - 1]);
+        /* Copio caracter por caracter de forma invertida */
+        str2[j] = str1 [i-1];
+        j++;
     }
-    printf("\nLen 2: %ld\n", i);
+    /* Agreo el '\0' al final */
+    str2[j] = '\0';
+    printf("%s", str2);
 
-    for(j=len; j > 0;j--){
-        putchar(s[j-1]);
-    }
-    putchar('\n');
-
-    return 0;
+    return EXIT_SUCCESS;
 }

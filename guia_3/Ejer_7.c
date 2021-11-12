@@ -5,26 +5,26 @@ Escribir un programa que dadas dos cadenas de caracteres realice la concatenacio
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define MAX_STR 100
 
-int main(void){
-    char str[MAX_STR] = "Hola", str2[MAX_STR] = " Como estas?";
+int main (void){
+    char str1[MAX_STR] = "Hola Mundo";
+    char str2[MAX_STR] = "Hello World-";
+    char str3[MAX_STR] = "Hello World_";
 
-    int i=0, j;
+    size_t i = 0, len_str3 = 0;
 
-    while (str[i] != '\0')
-    {
-        i++;
-    }
+    strcat(str2, str1);
+    printf("Uso de strcat(): %s\n", str2);
 
-    printf("%i\n",i);
-    
-    for (j=i; (str[j]=str2[j-i]) != '\0'; j++);
-    str[j] = '\0';
-
-    puts(str);
-
-    return 0;
+    len_str3 = strlen(str3);
+    for (i = len_str3; (str3[i] = str1[i-len_str3]) != '\0'; i++);
+    str3 [i] = '\0';
+    printf("Concatenacion manual: %s\n", str3);
+        
+    return EXIT_SUCCESS;
 }
 

@@ -21,15 +21,11 @@ int main(void){
     for(j=i;(destination2[j]=destination1[j-i]);j++);
 */
         
-    strcpy (destination1, "Hello World");
+    strcpy (destination1, "Hello World"); /* Esta funcion agrega el '\0' */
 
     for(i=0;source[i]!='\0';i++)
         destination2[i]=source[i];
-    destination2[i] = '\0';
-
-    
-
-
+        destination2[i] = '\0';
 
     puts(source);
     puts(destination1);
