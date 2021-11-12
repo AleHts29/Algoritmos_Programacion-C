@@ -1,3 +1,7 @@
+/*
+8) Escribir un programa que dadas dos cadenas de caracteres, realice una comparación lexicográfica entre ellas y devuelva valores positivos, cero y negativos, según el resultado obtenido (equivalente a la función de biblioteca strcmp(), encabezado <string.h>).
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
