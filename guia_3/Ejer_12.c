@@ -1,6 +1,6 @@
 /*
-11:
-Escribir un programa que convierta una cadena de caracteres a miniscula (equivalente a la función no ANSI strlwr()).
+12:
+Escribir un programa que convierta una cadena de caracteres a Mayuscula (equivalente a la función no ANSI strupr()).
 */
 
 #include <stdio.h>
@@ -16,11 +16,11 @@ int main (void){
     size_t i;
 
     for (i = 0; str1[i] != '\0'; i++)
-        str2[i] = tolower(str1[i]);
+        str2[i] = toupper(str1[i]);
     str2[i] = '\0';
 
     printf("Cadena original: %s\n", str1);
-    printf("Conviercion a minuscula: %s\n", str2);
+    printf("Conviercion a Mayuscula: %s\n", str2);
         
     return EXIT_SUCCESS;
 }

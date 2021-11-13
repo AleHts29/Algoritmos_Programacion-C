@@ -25,7 +25,7 @@ int main(void){
 
     for(i=0;source[i]!='\0';i++)
         destination2[i]=source[i];
-        destination2[i] = '\0';
+    destination2[i] = '\0';
 
     puts(source);
     puts(destination1);
