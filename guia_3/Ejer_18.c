@@ -1,23 +1,15 @@
+/*
+18) Escribir un programa que lea una cadena de stdin, determine si es un palíndromo o no e informe el resultado por stdout. Considerar el caso de longitud de cadena par e impar.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
 #define MAX_STR 100
-#define MAX_NUMBER_TO_COPY 7
 
-
-#define USM_MSG_INPUT_OPTION "Por favor elija una opcion"
-#define USM_MSG_INPUT_TEXT "Ingrese un texto que inicie con espacion en blaco"
-#define INVALID_OPTION "Opcion de conversion no valida"
-#define ERROR_INPUT_OPTION "Error: Dato ingresado no valido"
-
-#define FTM_UPPERCASE_NAMING "Convertir a Mayuscula"
-#define FTM_LOWERCASE_NAMING "Convertir a Minuscula"
-
-#define FTM_UPPERCASE_ID 1
-#define FTM_LOWERCASE_ID 2
-
+#define USM_MSG_INPUT_TEXT "Ingrese un texto para saber si es PALINDROMO o no lo es. "
 
 
 int main (void){
