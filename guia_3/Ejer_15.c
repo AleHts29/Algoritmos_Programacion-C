@@ -1,5 +1,3 @@
-
-
 /*
 15:
 Escribir un programa que lea de stdin una cadena de caracteres que comience con espacios en blanco y
@@ -7,32 +5,32 @@ los elimine desplazando los caracteres útiles hacia la izquierda. (operación
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-#define MSG_WELCOME_USER "Ingrese un texto"
-
+#define USM_MSG_INPUT_TEXT "Ingrese un texto que inicie con espacion en blaco"
 #define MAX_STR 100
 
-int main(void){
-    char str[MAX_STR];
-    size_t i=0, j=0;
 
-    puts(MSG_WELCOME_USER);
-    fgets(str, sizeof(str)+2, stdin);
+int main (void){
+    char str2[MAX_STR];
 
-    while (str[j] == ' ')
-        {
-            j++;
-        }
-    while (str[i] !='\0')
-        {
-            str[i]=str[j];
-            i++;
-            j++;
-        }
+    size_t i, j = 0;
 
-    puts(str);
+
+    puts(USM_MSG_INPUT_TEXT);
+    fgets(str2, sizeof(str2) + 2, stdin);
     
-    return 0;
+    while(str2[j] == ' ')
+        j++;
 
+    for (i = 0; str2[j] != '\0'; i++){
+            str2[i] = str2[j];
+            j++;
+        }
+    str2[i] = '\0';
+
+    printf("left-trim:%s\n", str2);
+        
+    return EXIT_SUCCESS;
 }

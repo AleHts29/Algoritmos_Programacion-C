@@ -58,6 +58,7 @@ int main(void) {
 			break;
 		default:
 			manufacturer = CORPORATION_3M;
+			break;
 	}
 
 	/*Procesamiento*/
